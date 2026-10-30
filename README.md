@@ -6,3 +6,4 @@ A tiny command-line app to jot down campus notes.
 
     python3 notes.py add "DBMS unit 3 revision"
     python3 notes.py list
+- Q1 clone test

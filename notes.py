@@ -8,41 +8,36 @@ def add_note(text):
         f.write(text + "\n")
     print("Added:", text)
 
+def load_notes():
+    try:
+        with open(NOTES_FILE, "r") as f:
+            return f.readlines()
+    except FileNotFoundError:
+        return []
 
 def list_notes():
-    try:
-        with open(NOTES_FILE) as f:
-            notes = f.readlines()
+    notes = load_notes()
 
-        if not notes:
-            print("No notes yet.")
-            return
-
-        for i, line in enumerate(notes, 1):
-            print(f"{i}. {line.strip()}")
-
-    except FileNotFoundError:
+    if not notes:
         print("No notes yet.")
+        return
 
+    for i, line in enumerate(notes, 1):
+        print(f"{i}. {line.strip()}")
 
 def delete_note(number):
-    try:
-        with open(NOTES_FILE) as f:
-            notes = f.readlines()
+    notes = load_notes()
 
-        if number < 1 or number > len(notes):
-            print("Invalid note number.")
-            return
+    if number < 1 or number > len(notes):
+        print("Invalid note number.")
+        return
 
-        deleted = notes.pop(number - 1)
+    deleted = notes.pop(number - 1)
 
-        with open(NOTES_FILE, "w") as f:
-            f.writelines(notes)
+    with open(NOTES_FILE, "w") as f:
+        f.writelines(notes)
 
-        print("Deleted:", deleted.strip())
-
-    except FileNotFoundError:
-        print("No notes yet.")
+    print("Deleted:", deleted.strip())
 
 
 if __name__ == "__main__":

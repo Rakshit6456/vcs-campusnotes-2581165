@@ -34,7 +34,7 @@ def delete_note(number):
 
     deleted = notes.pop(number - 1)
 
-    with open(NOTES_FILE, "w") as f:
+    with open(NOTES_FILE, "r", encoding="utf-8") as f:
         f.writelines(notes)
 
     print("Deleted:", deleted.strip())

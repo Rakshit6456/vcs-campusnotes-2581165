@@ -44,6 +44,15 @@ def delete_note(number):
     print("Deleted:", deleted.strip())
 
 
+def search_notes(keyword):
+    matches = [n.strip() for n in load_notes() if keyword.lower() in n.lower()]
+    if not matches:
+        print("No matching notes.")
+        return
+    for m in matches:
+        print("-", m)
+
+
 if __name__ == "__main__":
     if len(sys.argv) >= 3 and sys.argv[1] == "add":
         add_note(" ".join(sys.argv[2:]))
@@ -56,6 +65,9 @@ if __name__ == "__main__":
             delete_note(int(sys.argv[2]))
         except ValueError:
             print("Please enter a valid note number.")
+
+    elif len(sys.argv) == 3 and sys.argv[1] == "search":
+        search_notes(sys.argv[2])
 
     else:
         print("Usage: python3 notes.py add <text> | list | delete <number>")

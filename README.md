@@ -9,3 +9,4 @@ A tiny command-line app to jot down campus notes.
     python3 notes.py delete 1
     python3 notes.py search "unit"
 Notes are saved in notes.txt.
+Run with python3.

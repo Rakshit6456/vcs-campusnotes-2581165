@@ -28,6 +28,10 @@ def list_notes():
 def delete_note(number):
     notes = load_notes()
 
+    if not notes:
+        print("No notes yet.")
+        return  
+
     if number < 1 or number > len(notes):
         print("Invalid note number.")
         return

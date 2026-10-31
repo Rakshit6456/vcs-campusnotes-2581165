@@ -1,6 +1,7 @@
 import sys
 
 NOTES_FILE = "notes.txt"
+USAGE = "Usage: python3 notes.py add <text> | list | delete <number> | search <keyword>"
 
 
 def add_note(text):
@@ -70,4 +71,4 @@ if __name__ == "__main__":
         search_notes(sys.argv[2])
 
     else:
-        print("Usage: python3 notes.py add <text> | list | delete <number>")
+        print(USAGE)
